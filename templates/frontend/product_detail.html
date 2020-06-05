@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login</title><!-- Stylesheets -->
+    <title>Services</title><!-- Stylesheets -->
     <link href="http://payloop.net/usertheme/css/bootstrap.css" rel="stylesheet">
     <link href="http://payloop.net/usertheme/css/style.css" rel="stylesheet">
     <link href="http://payloop.net/usertheme/css/aos.css" rel="stylesheet">
@@ -76,80 +76,131 @@
     left: 50%;
     transform: translatex(-50%);
 }
-
-        .main-header .main-box {
-            position: fixed;
-            top: 0px;
-            z-index: 999;
-            opacity: 1;
-            visibility: visible;
-            background-color: #ffffff !important;
-        }
-
-        .main-header .main-box:after {
-            opacity: 1;
-        }
-
-        .pricing {
-            margin-top: 100px;
-        }
-
-        header.main-header .main-menu .navigation>li.dropdown ul.dropdown-large {
-            top: 70px;
-        }
-    </style>
-		
-        <section class="login">
+</style>
+        <section class="product-banner services">
+            <div class="auto-container text-center">
+                <h3>Services</h3>
+            </div>
+        </section>
+        <section class="features-section-two pt-100" id="features">
             <div class="auto-container">
-                <div class="m-auto col-md-9 login-box p0">
-                    <div class="left-block col-md-6 col-sm-6 col-xs-12 p0">
-                        <img src="http://payloop.net/usertheme/images/login.jpg" alt="" width="100%">
+                <div class="features-container clearfix">
+                    <div class="row clearfix">
+                        <!--Text Column-->
+                        <div class="text-column col-md-4 col-sm-12 col-xs-12">
+                            <div class="inner">
+                                <h2 data-aos="fade-up" data-aos-delay="100">Our Services</h2>
+                                <div class="text" data-aos="fade-up" data-aos-delay="200"><p>A speedy ERP Implementation minimizes disruption, improves performance, and adds to the bottom line of the business without wasting valuable resources on the process.</p></div>
+                                <div class="more-link-one" data-aos="fade-up" data-aos-delay="300"><a href="#" class="theme-btn">See more <span class="icon ti-arrow-circle-right"></span></a></div>
+                            </div>
+                        </div>
+                        <!--Features Column-->
+                        <div class="features-column col-md-8 col-sm-12 col-xs-12">
+                            <div class="inner">
+                                <div class="row clearfix">
+                                    <!--Feature Block-->
+									                                    <div class="feature-block-two col-md-6 col-sm-6 col-xs-12" data-aos="fade-left" data-aos-delay="100">
+                                        <div class="inner-box">
+                                            <div class="icon">
+                                                <figure class="image"><img src="http://payloop.net/upload/service/1552984603implement.png" alt=""></figure>
+                                            </div>
+                                            <h3><a href="#">Implementation</a></h3>
+                                            <div class="text"><p>Requirement Research, Project Planning, Solution Design</p></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="feature-block-two col-md-6 col-sm-6 col-xs-12" data-aos="fade-left" data-aos-delay="100">
+                                        <div class="inner-box">
+                                            <div class="icon">
+                                                <figure class="image"><img src="http://payloop.net/upload/service/1552984668development.png" alt=""></figure>
+                                            </div>
+                                            <h3><a href="#">Development</a></h3>
+                                            <div class="text"><p>Custom Feature Development, Process Enhancement</p></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="feature-block-two col-md-6 col-sm-6 col-xs-12" data-aos="fade-left" data-aos-delay="100">
+                                        <div class="inner-box">
+                                            <div class="icon">
+                                                <figure class="image"><img src="http://payloop.net/upload/service/1552984693support.png" alt=""></figure>
+                                            </div>
+                                            <h3><a href="#">Support</a></h3>
+                                            <div class="text"><p>Bug Fixes Guarentee, SLA Based Support</p></div>
+                                        </div>
+                                    </div>
+                                                                        <div class="feature-block-two col-md-6 col-sm-6 col-xs-12" data-aos="fade-left" data-aos-delay="100">
+                                        <div class="inner-box">
+                                            <div class="icon">
+                                                <figure class="image"><img src="http://payloop.net/upload/service/1552984719training.png" alt=""></figure>
+                                            </div>
+                                            <h3><a href="#">Traning</a></h3>
+                                            <div class="text"><p>Technical, Functional and administrator Trainings</p>
+
+<p>&nbsp;</p></div>
+                                        </div>
+                                    </div>
+                                                                    </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <form action="http://payloop.net/login/index" method="POST" role="form" class="default-form" accept-charset="utf-8">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <img src="http://payloop.net/usertheme/images/logo.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" name="email" class="form-control">
-                                        <span class="error" style="display:block !important;"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" class="form-control">
-                                        <span class="error" style="display:block !important;"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group "><button class="theme-btn btn-style-two" type="submit">Sign in</button></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group mb-xs-0">
-                                        <div class="pull-left"><a href="http://payloop.net/Register">Don't have an account?</a></div>
-                                        <div class="pull-right"><a href="http://payloop.net/Forgot_password">Forgot Password</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>                    </div>
                 </div>
             </div>
         </section>
-         <!--Footer Style One-->
+      <section class="contact-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <!--Image Column-->
+                    <div class="image-column col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="100">
+                        <div class="inner">
+                            <figure class="image"><img src="http://payloop.net/upload/contact/1554557633featured-image-4.png" alt=""></figure>
+                        </div>
+                    </div>
+                    <!--Form Column-->
+                    <div class="form-column col-md-6 col-sm-12 col-xs-12">
+                        <div class="sec-title">
+                            <h2 data-aos="fade-up" data-aos-delay="150">GET IN TOUCH</h2>
+                            <div class="desc-text" data-aos="fade-up" data-aos-delay="250"><p>Contact us about anything related to our company or services,We&#39;ll do our best to get back to you as soon as possible.</p></div>
+                        </div>
+                        <!--Contact Form-->
+                        <div class="default-form contact-form">
+                            <form method="post" id="contact-form">
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+									<input type="text" id="bname" name="bname" value="" placeholder="Name">
+									<span id="bname_error" style="color:red;"></span>
+								</div>
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="350">
+									<input type="text" id="boname" name="boname" value="" placeholder=" Owner’s Name">
+									<span id="boname_error" style="color:red;"></span>
+								</div>
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="400">
+									<select name="stores" id="stores">
+                                        <option value="">Select Option</option>
+                                        <option value="How many stores of you have?">How many stores of you have?</option>
+                                        <option value="Two Stores">Two Stores</option>
+                                        <option value="Five Stores">Five Stores</option>
+                                        <option value="Twelve Stores">Twelve Stores</option>
+                                    </select>
+									<span id="stores_error" style="color:red;"></span>
+								</div>
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="450">
+									<input type="text" id="phone" name="phone" value="" placeholder="Phone Number" onkeypress="return checkOnlyDigits(event)">
+									<div id="errorMsg"></div>
+									<span id="phone_error" style="color:red;"></span>
+								</div>
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+									<input type="text" id="email" name="email" value="" placeholder="Email Address">
+									<span id="email_error" style="color:red;"></span>
+								</div>
+                                <div class="form-group" data-aos="fade-up" data-aos-delay="550">
+									<button type="button" onclick="return getcontact();" class="theme-btn btn-style-two">Submite form <span class="icon ti-arrow-circle-right"></span>
+									</button>
+								</div>
+                            </form>
+                        </div>
+                        <!--End Contact Form-->
+                    </div>
+                </div>
+            </div>
+        </section>
+<!--Footer Style One-->
         <footer class="footer-style-one" data-aos="fade-up" data-aos-delay="300">
             <!--Footer Upper-->
             <div class="footer-upper">
@@ -257,7 +308,7 @@
     <script src="http://payloop.net/usertheme/js/validate.js"></script>
     <script src="http://payloop.net/usertheme/js/script.js"></script>
     <script src="http://payloop.net/usertheme/js/aos.js"></script>
-    <script>
+    <script>        
         AOS.init({
             useClassNames: true,
             initClassName: false,
@@ -265,6 +316,89 @@
             offset: 20,
         });
     </script>
+	<script>
+		function getcontact(){
+			$("#bname_error").html("");
+			$("#boname_error").html("");
+			$("#stores_error").html("");
+			$("#phone_error").html("");
+			$("#email_error").html("");
+			
+			var bname = $("#bname").val();
+			var boname = $("#boname").val();
+			var stores = $("#stores").val();
+			var phone = $("#phone").val();
+			var email = $("#email").val();
+			$evalidate = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+			var temp = 0;
+				if(bname == ""){
+            		$("#bname_error").html("Name is required.");
+            		temp++;
+        		}
+				if(boname == ""){
+            		$("#boname_error").html("Owner Name is required.");
+            		temp++;
+        		}
+				if(stores == ""){
+            		$("#stores_error").html("select option.");
+            		temp++;
+        		}
+				if(phone == ""){
+            		$("#phone_error").html("Phone is required.");
+            		temp++;
+        		}
+				if(email == ""){
+            		$("#email_error").html("Email is required.");
+            		temp++;
+        		}else{
+					if(email.match($evalidate)){
+		  		}else{
+          			temp++;
+            		$("#email_error").html("Invalid Email!!");
+          		}
+				}
+				
+				if(temp != 0){
+            		return false;     
+        		}else{
+					
+					$.ajax({
+						type: "POST",
+						url: "http://payloop.net/home/contact?bname="+bname+"&boname="+boname+"&stores="+stores+"&phone="+phone+"&email="+email,
+						cache: false,
+						success: function(result){
+							if(result > 0){
+								document.getElementById('alert').style.display = 'block';
+								document.getElementById('bname').value= '';
+								document.getElementById('boname').value= '';
+								document.getElementById('stores').value= '';
+								document.getElementById('phone').value= '';
+								document.getElementById('email').value= '';
+								
+								
+							}else{
+								document.getElementById('alert').style.display = 'none';
+							}
+						}
+					});
+				}
+		}
+	</script>
+	<script type="text/javascript">
+		function checkOnlyDigits(e) {
+			e = e ? e : window.event;
+			var charCode = e.which ? e.which : e.keyCode;
+			if (charCode < 48 || charCode > 57) {
+				document.getElementById('errorMsg').style.display = 'block';
+				document.getElementById('errorMsg').style.color = 'red';
+				document.getElementById('errorMsg').innerHTML = 'OOPs! Only digits allowed.';
+				return false;
+			} else {
+				document.getElementById('errorMsg').style.display = 'none';
+				return true;
+			}
+		}
+</script>
 </body>
 
 </html>

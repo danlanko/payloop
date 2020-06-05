@@ -1,0 +1,82 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+{% block page_css %}
+    <link href="{% static 'backend/plugins/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/buttons.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/select.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+{% endblock page_css %}
+
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Client List</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Payloop</a></li>
+                    <li class="breadcrumb-item active">Client List</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+    {% block page_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="basic-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Company Name</th>
+                                <th>Address</th>
+                                <th>Reg Date</th>
+                                <th>Package</th>
+                                <th>Modules</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for client in object_list %}
+                                <tr>
+                                    <td>{{ client.user.get_full_name }}</td>
+                                    <td>{{ client.user.username }}</td>
+                                    <td>{{ client.phone }}</td>
+                                    <td>{{ client.user.email }}</td>
+                                    <td>{{ client.company_name }}</td>
+                                    <td>{{ client.address }}</td>
+                                    <td>{{ client.reg_date }}</td>
+                                    <td>{{ client.package }}</td>
+                                    <td>
+                                        {% for item in modules %}
+                                            {% if client.user_id  == item.user_id  %}
+                                                {{ item.module.name }} {% if not forloop.last %}, {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'customer_profile' client.id %}"><span class="fa fa-search text-black"></span></a>
+                                        <a href="{% url 'delete_customer' client.user.id %}" class="confirm"><span class="fa fa-trash text-danger"></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+    <!-- end row-->
+    {% endblock page_content %}

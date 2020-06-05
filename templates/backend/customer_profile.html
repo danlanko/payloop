@@ -1,0 +1,204 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">{{ object.user.get_full_name }} Board</h4>
+            <h2><span class="float-right badge badge-soft-success">{{ object.package|capfirst }} Package</span></h2>
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+    {% block page_content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title badge badge-soft-danger text-center text-dark">Modules</h5>
+                    <button type="button" class="btn btn-success waves-effect waves-light float-right btn-sm" data-toggle="modal" data-target="#newModule">
+                        New Module
+                    </button>
+
+                    <!-- Modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="newModule" tabindex="-1" role="dialog" aria-labelledby="newModule" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add a new module</h5>
+                                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                   <form method="post" action="{% url 'add_module' object.id %}">
+                                       {% csrf_token %}
+                                       <select required name="module" class="form-control">
+                                            <option selected value="">Please select module</option>
+                                           {% for item in product %}
+                                               <option value="{{ item.id }}">{{ item.name }}</option>
+                                           {% endfor %}
+                                       </select>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light">Add Module</button>
+                                    </div>
+                                   </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Module</th>
+                                    <th>Last Pay Date</th>
+                                    <th>Next Pay Date</th>
+                                    <th>Cost</th>
+                                    <th>Active</th>
+                                    <th>Suspend Payment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in modules %}
+                                <tr>
+                                    <th>{{ item.module.name }}</th>
+                                    <td>
+                                        {{ item.last_pay_date }}
+                                    </td>
+                                    <td>
+                                        {{ item.next_pay_date }}
+                                    </td>
+                                    <td>
+                                        ₦{{ item.module.amount|intcomma }}
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-{% if item.is_active is True %}success{% else %}danger{% endif %}">{{ item.is_active }}</label>
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-{% if item.suspend is True %}success{% else %}danger{% endif %}">{{ item.suspend }}</label>
+                                    </td>
+                                    <td>
+                                        {% if not item.is_active %}
+                                            <a href="{% url 'delete_module' item.id object.id %}">
+                                                <i class="fa fa-trash  text-danger confirm" data-toggle="tooltip" data-placement="top" title="Delete module"></i>
+                                            </a>
+                                        {% endif %}
+                                        {% if item.suspend %}
+                                            <a href="{% url 'suspend_module' item.id object.id 'un-suspend' %}">
+                                                <i data-toggle="tooltip" data-placement="top" title="Un-suspend paying for this module" class="fa fa-money-bill text-danger confirm"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'suspend_module' item.id object.id 'suspend' %}">
+                                                <i data-toggle="tooltip" data-placement="top" title="Suspend paying for this module" class="fa fa-money-bill text-success confirm"></i>
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title badge badge-soft-danger text-center text-dark">Personal Information</h5>
+                    <p class="card-text">Name: <br /><strong>{{ object.user.get_full_name }}</strong> </p>
+                    <p class="card-text">Phone: <br /><strong>{{ object.phone }}</strong> </p>
+                    <p class="card-text">Email:<br /> <strong>{{ object.user.email }}</strong> </p>
+                    <p class="card-text">Company Name:<br /> <strong>{{ object.company_name }}</strong> </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title badge badge-soft-danger text-center text-dark">Account Details</h5>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Account Created On</th>
+                                    <td>{{ object.reg_date }}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Payable</th>
+                                    <td class="text-danger">
+                                        ₦{{ payable|intcomma }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Action</th>
+                                    <td>
+                                        <a href="{% url 'generate_ref' object.id %}"><button class="btn btn-success"><i class="fa fa-money"></i>Pay Now</button></a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row-->
+    {% endblock page_content %}
+
+{% block page_js %}
+    {% if ref_id %}
+    <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+    <script>
+
+        function payWithRave() {
+            var x = getpaidSetup({
+                PBFPubKey: "FLWPUBK-0f7bc94d7cd0d202231aad73a438101d-X",
+                customer_email: "{{ object.user.email }}",
+                amount: {{ payable }},
+                customer_phone: "{{ object.phone }}",
+                currency: "NGN",
+                txref: "{{ ref_id }}",
+                meta: [{
+                    metaname: "flightID",
+                    metavalue: "AP1234"
+                }],
+                onclose: function() {
+                    window.location = '{% url 'customer_profile' object.id  %}';
+                },
+                callback: function(response) {
+                    var txref = response.tx.txRef; // collect txRef returned and pass to a server page to complete status check.
+                    console.log("This is the response returned after a charge", response);
+                    if (
+                        response.tx.chargeResponseCode == "00" ||
+                        response.tx.chargeResponseCode == "0"
+                    ) {
+                        window.location = '{% url 'verify_payment' object.id ref_id  %}';
+
+                    } else {
+                        window.location = '{% url 'customer_profile' object.id  %}';
+                    }
+
+                    x.close(); // use this to close the modal immediately after payment.
+                }
+            });
+        }
+    </script>
+    {% endif %}
+{% endblock page_js %}

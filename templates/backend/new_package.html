@@ -1,0 +1,111 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Packages</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Payloop</a></li>
+                    <li class="breadcrumb-item active">New Package</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+{% block page_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-md-12 ">
+                            <div class="form-row">
+
+                                <div class="col-md-6 mb-3">
+
+                                        <label for="">Package Name</label>
+                                        {{ form.name }}
+                                        <div class="valid-feedback">Looks good!</div>
+                                        <div class="invalid-feedback">Package name is required</div> <br />
+
+                                        <label for="">Package Type</label>
+                                        {{ form.p_type }}
+                                        <div class="valid-feedback">Looks good!</div>
+                                        <div class="invalid-feedback">Package Type is required</div> <br />
+
+                                    <label for="">Description</label>
+                                    {{ form.des }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Amount is required</div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="basic-datatable" class="table dt-responsive nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Package Name</th>
+                                                        <th>Desc</th>
+                                                        <th>Type</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                {% if object_list %}
+                                                    {% for item in object_list %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ item.name }}
+                                                            </td>
+                                                            <td>{{ item.des }}</td>
+                                                            <td>{{ item.p_type }}</td>
+                                                            <td>
+                                                                <a href="{% url 'update_package' item.id %}"><span class="fa fa-edit fa-2x"></span></a>
+{#                                                                <a href="{% url 'delete_package' item.id %}" class="confirm-action"><span class="text-danger fa fa-trash fa-2x"></span></a>#}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <h2 style="color: darkred">No package added yet</h2>
+                                                {% endif %}
+                                                </tbody>
+                                            </table>
+
+                                        </div> <!-- end card body-->
+                                    </div> <!-- end card -->
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect waves-light" type="submit">Submit form</button>
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row-->
+{% endblock page_content %}
+
+
+{% block page_js %}
+    <!-- ckeditor script files -->
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <!-- Validation custom js-->
+    <script src="{% static 'backend/assets/pages/validation-demo.js' %}"></script>
+{% endblock page_js %}

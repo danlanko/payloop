@@ -1,18 +1,24 @@
 {% extends 'frontend/base.html' %}
+{% load humanize %}
 {% load static %}
 
 {% block main_page %}
+    {% block menu2 %} {% endblock %}
     <!-- Main Banner -->
-    <section class="main-banner banner-one" id="banner" style="background-image:url('{% static 'usertheme/images/background/banner-bg-1.png' %}');">
+    <section class="main-banner banner-one" id="home" style="background-image:url('{% static 'usertheme/images/background/banner-bg-1.png' %}');">
         <div class="auto-container">
             <div class="row clearfix">
                 <!--Text Column-->
                 <div class="text-column col-md-6 col-sm-12 col-xs-12">
                     <div class="inner">
-                        <h4>Payloop ERP System</h4>
-                        <h2>The Open Source ERP and CRM System For Your Business</h2>
-                        <p>Payloop is the next generation business information system helps you grow your business, with powerful modular design covering all essential aspects of a business.</p>
-                        <a href="#" class="theme-btn btn-style-two">Start Now <span class="icon ti-arrow-circle-right"></span></a>
+                        {% if banner_text %}
+                            <h4>{{ banner_text.title }}</h4>
+                            <h2>{{ banner_text.highlight }}</h2>
+                            <p>{{ banner_text.content }}</p>
+                            <a href="#pricing" class="theme-btn btn-style-two">Start Now <span class="icon ti-arrow-circle-right"></span></a>
+                        {% else %}
+                            <h4>Please activate a text</h4>
+                        {% endif %}
                     </div>
                 </div>
                 <!--Image Column-->
@@ -37,85 +43,81 @@
                     </figure>
                 </div>
                 <h2 data-aos="fade-up" data-aos-delay="100">Products</h2>
-                <div class="desc-text" data-aos="fade-up" data-aos-delay="200"><p>Fully Integrated Apps</p></div>
+                <div class="desc-text" data-aos="fade-up" data-aos-delay="200"><p>Fully ERP Integrated Apps</p></div>
             </div>
             <!--Services-->
             <div class="services-outer clearfix">
 
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
+                {% for item in erp  %}
+                <div class="service-style-one col-md-3 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
                     <div class="inner-box">
                         <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976261accounting.png' %}" alt=""></figure>
+                            <figure class="image"><img src="{{ item.icon.url }}" alt=""></figure>
                         </div>
-                        <h3><a href="#">ACCOUNTING</a></h3>
-                        <div class="text"><p>Real time view of your chart of Accounts, taxes, fiscal positions, bank accounts, journals, Financial and Managment accounting reports.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
+                        <h3><a href="{% url 'product_detail' item.id %}">{{ item.name }}</a></h3>
+                        <div class="text"><p>{{ item.content|safe|truncatechars:65 }}</p></div>
+                        <div class="link-box"><a href="{% url 'product_detail' item.id %}">See more <span class="icon ti-arrow-circle-right"></span></a></div>
                     </div>
                 </div>
-
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="inner-box">
-                        <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976376crm.png' %}" alt=""></figure>
-                        </div>
-                        <h3><a href="#">CRM</a></h3>
-                        <div class="text"><p>Customer relationship management at its best. Generate leads, take advantage of opportunities and track customer service activities.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
-                    </div>
-                </div>
-
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="inner-box">
-                        <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976393ecommerce.png' %}" alt=""></figure>
-                        </div>
-                        <h3><a href="#">e-COMMERCE</a></h3>
-                        <div class="text"><p>Sell and cross sell products online as they are available with additional payment channels beyond credit/debit card.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
-                    </div>
-                </div>
-
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="inner-box">
-                        <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976475hr.png' %}" alt=""></figure>
-                        </div>
-                        <h3><a href="#">HUMAN RESOURCE</a></h3>
-                        <div class="text"><p>Manage employees across company locations. Manage time and attendance, leave requests, recruitment and so much more.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
-                    </div>
-                </div>
-
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="inner-box">
-                        <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976491maketing.png' %}" alt=""></figure>
-                        </div>
-                        <h3><a href="#">MARKETING</a></h3>
-                        <div class="text"><p>Manage marketing initiatives across media touch-points, review marketing activities and measure performance across KPIs.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
-                    </div>
-                </div>
-
-                <div class="service-style-one col-md-4 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                    <div class="inner-box">
-                        <div class="icon">
-                            <figure class="image"><img src="{% static 'upload/product/1552976522manufacturing.png' %}" alt=""></figure>
-                        </div>
-                        <h3><a href="#">MANUFACTURING</a></h3>
-                        <div class="text"><p>Create manufacturing orders based on bill of material. Manage and streamline manufacturing processes for revenue assurance and organisation excellence.</p></div>
-                        <div class="link-box"><a href="#">See more <span class="icon ti-arrow-circle-right"></span></a></div>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
-            <div class="text-center fb">
-                <a href="#"><button class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="100">View All</button></a>
-            </div>
+{#            <div class="text-center fb">#}
+{#                <a href="#"><button class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="100">View All</button></a>#}
+{#            </div>#}
         </div>
     </section>
+
+    <!--Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <figure data-aos="fade-up" class="image">
+                    <img src="{% static 'upload/product/1552974527icon-29.png' %}" alt="">
+                </figure>
+            </div>
+            <h2 data-aos="fade-up" data-aos-delay="100">Pricing</h2>
+            <div class="desc-text" data-aos="fade-up" data-aos-delay="200"><p>Payloop ERP</p></div>
+        </div>
+        <div class="pricing-wrapper clearfix">
+
+            {% for package in packages %}
+                <div class="pricing-table">
+                    <h3 class="pricing-title">{{ package.name }}</h3>
+                    <div class="price" style="font-size: 15px;">{{ package.des|capfirst }}</div>
+                    <ul class="table-list">
+                        {% for item in erp %}
+                            {% if package.p_type == 3 %}
+                                {% if forloop.first %}
+                                    <form action="{% url 'process_modular' package.id %}" method="post">
+                                {% endif %}
+                                    {% csrf_token %}
+                                        <input type="checkbox" name="{{ item.id }}" value="{{ item.id }}" /> <span style="text-align: left">{{ item.name }} (₦{{ item.amount|intcomma }})</span>  <br />
+                                    {% if forloop.last %}
+                                        <button style="margin: 5px 0 15px 0" type="submit" class="btn btn-danger btn-lg " >Get Started</button>
+                                    {% endif %}
+                                {% if forloop.last %}
+                                </form>
+                                {% endif %}
+                            {% elif package.p_type == 1 %}
+                                <span class="fa fa-check-circle text-success"></span> {{ item.name }} (₦{{ item.amount|intcomma }}) <br />
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% if package.p_type is 2%}
+                        <a class="btn btn-danger btn-lg" style="margin: 5px 0 15px 0" type="button" href="{% url 'register_product' package.id 'custom' %}">Talk to us</a>
+                    {% elif package.p_type is 1 %}
+                        <a class="btn btn-danger btn-lg" style="margin: 5px 0 15px 0" type="button" href="{% url 'register_product' package.id 'all_package' %}">Get Started</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+
     <!--Features Section-->
-    <section class="features-section-two" id="features">
+    <section class="features-section-two" id="service">
         <div class="auto-container">
             <div class="features-container clearfix">
                 <div class="row clearfix">
@@ -124,7 +126,7 @@
                         <div class="inner">
                             <h2 data-aos="fade-up" data-aos-delay="100">Our Services</h2>
                             <div class="text" data-aos="fade-up" data-aos-delay="200"><p>A speedy ERP Implementation minimizes disruption, improves performance, and adds to the bottom line of the business without wasting valuable resources on the process.</p></div>
-                            <div class="more-link-one" data-aos="fade-up" data-aos-delay="300"><a href="#" class="theme-btn">See more <span class="icon ti-arrow-circle-right"></span></a></div>
+{#                            <div class="more-link-one" data-aos="fade-up" data-aos-delay="300"><a href="#" class="theme-btn">See more <span class="icon ti-arrow-circle-right"></span></a></div>#}
                         </div>
                     </div>
                     <!--Features Column-->
@@ -139,7 +141,7 @@
                                                 <img src="{% static 'upload/service/1552984603implement.png' %}" alt="">
                                             </figure>
                                         </div>
-                                        <h3><a href="#">Implementation</a></h3>
+                                        <h3><strong>Implementation</strong></h3>
                                         <div class="text"><p>Requirement Research, Project Planning, Solution Design</p></div>
                                     </div>
                                 </div>
@@ -151,7 +153,7 @@
                                                 <img src="{% static 'upload/service/1552984668development.png' %}" alt="">
                                             </figure>
                                         </div>
-                                        <h3><a href="#">Development</a></h3>
+                                        <h3><strong>Development</strong></h3>
                                         <div class="text"><p>Custom Feature Development, Process Enhancement</p></div>
                                     </div>
                                 </div>
@@ -163,8 +165,8 @@
                                                 <img src="{% static 'upload/service/1552984693support.png' %}" alt="">
                                             </figure>
                                         </div>
-                                        <h3><a href="#">Support</a></h3>
-                                        <div class="text"><p>Bug Fixes Guarentee, SLA Based Support</p></div>
+                                        <h3><strong>Support</strong></h3>
+                                        <div class="text"><p>Bug Fixes Guarantee, SLA Based Support</p></div>
                                     </div>
                                 </div>
 
@@ -175,7 +177,7 @@
                                                 <img src="{% static 'upload/service/1552984719training.png' %}" alt="">
                                             </figure>
                                         </div>
-                                        <h3><a href="#">Traning</a></h3>
+                                        <h3><strong>Training</strong></h3>
                                         <div class="text"><p>Technical, Functional and administrator Trainings</p>
                                     </div>
                                 </div>
@@ -202,131 +204,179 @@
                 <div class="inventory-tabs">
                     <ul class="tab-buttons clearfix" data-aos="fade-up" data-aos-delay="300">
                         <li class="tab-btn" data-tab="#tab-one">All Product</li>
-                        <li class="tab-btn" data-tab="#tab-two">Accounting</li>
+                        {% for item in products %}
+                            <li class="tab-btn" data-tab="#{{ item.name }}">{{ item.name }}</li>
+                        {% endfor %}
                     </ul>
+
                     <div class="tabs-content" data-aos="fade-up" data-aos-delay="400">
                         <!--Tab / Active tab-->
                         <div class="tab active-tab" id="tab-one">
                             <ul class="image-carousel-one single-item-carousel owl-theme owl-carousel">
-                                <li>
-                                    <a href="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
-                                        <img src="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" alt="" />
-                                    </a>
-                                </li>
-                                    <a href="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
-                                        <img src="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" alt="" />
-                                    </a>
-                                </li>
+                                {% for item in products %}
+                                    {% if item.gallery1 %}
+                                        <li>
+                                            <a href="{{ item.gallery1.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery1.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery2 %}
+                                        <li>
+                                            <a href="{{ item.gallery2.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery2.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery3 %}
+                                        <li>
+                                            <a href="{{ item.gallery3.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery3.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery4 %}
+                                        <li>
+                                            <a href="{{ item.gallery4.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery4.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
                             </ul>
                         </div>
                         <!--Tab-->
-                        <div class="tab" id="tab-two">
-                            <ul class="image-carousel-one single-item-carousel owl-theme owl-carousel">
-                                <li>
-                                    <a href="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
-                                        <img src="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" alt="" />
-                                    </a>
-                                </li>
-                                    <a href="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
-                                        <img src="{% static 'usertheme/images/resource/featured-image-3.jpg' %}" alt="" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        {% for item in products %}
+                            <div class="tab" id="{{ item.name }}">
+                                <ul class="image-carousel-one single-item-carousel owl-theme owl-carousel">
+                                    {% if item.gallery1 %}
+                                        <li>
+                                            <a href="{{ item.gallery1.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery1.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery2 %}
+                                        <li>
+                                            <a href="{{ item.gallery2.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery2.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery3 %}
+                                        <li>
+                                            <a href="{{ item.gallery3.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery3.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if item.gallery4 %}
+                                        <li>
+                                            <a href="{{ item.gallery4.url }}" data-fancybox="gallery-two" class="lightbox-image" title="Image Caption">
+                                                <img src="{{ item.gallery4.url }}" alt="" />
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        {% endfor %}
                         <!--Tab-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="auto-container">
-            <div class="outer-container">
-                <!--Testimonials-->
-                <div class="testimonials-carousel-one single-item-carousel owl-theme owl-carousel" data-aos="fade-up" data-aos-delay="200">
-                    <!--Slide Item-->
-                    <div class="slide-item">
-                        <div class="row clearfix">
-                            <!--Text Column-->
-                            <div class="text-column col-md-7 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>
-                                </div>
-                            </div>
-                            <!--Info Column-->
-                            <div class="info-column col-md-5 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="info">
-                                        <figure class="thumb img-circle">
-                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">
-                                        </figure>
-                                        <h4>Jems</h4>
-                                        <div class="designation">Product Designer at UI_Expert</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="row clearfix">
-                            <!--Text Column-->
-                            <div class="text-column col-md-7 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>
-                                </div>
-                            </div>
-                            <!--Info Column-->
-                            <div class="info-column col-md-5 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="info">
-                                        <figure class="thumb img-circle">
-                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">
-                                        </figure>
-                                        <h4>Jems</h4>
-                                        <div class="designation">Product Designer at UI_Expert</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slide-item">
-                        <div class="row clearfix">
-                            <!--Text Column-->
-                            <div class="text-column col-md-7 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>
-                                </div>
-                            </div>
-                            <!--Info Column-->
-                            <div class="info-column col-md-5 col-sm-12 col-xs-12">
-                                <div class="inner">
-                                    <div class="info">
-                                        <figure class="thumb img-circle">
-                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">
-                                        </figure>
-                                        <h4>Jems</h4>
-                                        <div class="designation">Product Designer at UI_Expert</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{#    <section class="testimonials-section">#}
+{#        <div class="auto-container">#}
+{#            <div class="outer-container">#}
+{#                <!--Testimonials-->#}
+{#                <div class="testimonials-carousel-one single-item-carousel owl-theme owl-carousel" data-aos="fade-up" data-aos-delay="200">#}
+{#                    <!--Slide Item-->#}
+{#                    <div class="slide-item">#}
+{#                        <div class="row clearfix">#}
+{#                            <!--Text Column-->#}
+{#                            <div class="text-column col-md-7 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <!--Info Column-->#}
+{#                            <div class="info-column col-md-5 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="info">#}
+{#                                        <figure class="thumb img-circle">#}
+{#                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">#}
+{#                                        </figure>#}
+{#                                        <h4>Jems</h4>#}
+{#                                        <div class="designation">Product Designer at UI_Expert</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="slide-item">#}
+{#                        <div class="row clearfix">#}
+{#                            <!--Text Column-->#}
+{#                            <div class="text-column col-md-7 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <!--Info Column-->#}
+{#                            <div class="info-column col-md-5 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="info">#}
+{#                                        <figure class="thumb img-circle">#}
+{#                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">#}
+{#                                        </figure>#}
+{#                                        <h4>Jems</h4>#}
+{#                                        <div class="designation">Product Designer at UI_Expert</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="slide-item">#}
+{#                        <div class="row clearfix">#}
+{#                            <!--Text Column-->#}
+{#                            <div class="text-column col-md-7 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="text"><p>&ldquo;Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby.&rdquo;</p></div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <!--Info Column-->#}
+{#                            <div class="info-column col-md-5 col-sm-12 col-xs-12">#}
+{#                                <div class="inner">#}
+{#                                    <div class="info">#}
+{#                                        <figure class="thumb img-circle">#}
+{#                                            <img class="img-circle" src="{% static 'upload/testimonial/1552915690author-thumb-1.jpg' %}" alt="">#}
+{#                                        </figure>#}
+{#                                        <h4>Jems</h4>#}
+{#                                        <div class="designation">Product Designer at UI_Expert</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="auto-container">
             <div class="row clearfix">
                 <!--Image Column-->
                 <div class="image-column col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="100">
                     <div class="inner">
                         <figure class="image">
-                            <img src="{% static 'upload/contact/1554557633featured-image-4.png' %}" alt="">
+                            <img src="{% static 'upload/banner/1552909751banner-image-1.png' %}" alt="">
                         </figure>
                     </div>
                 </div>
@@ -343,20 +393,6 @@
                                 <input type="text" id="bname" name="bname" value="" placeholder="Name">
                                 <span id="bname_error" style="color:red;"></span>
                             </div>
-                            <div class="form-group" data-aos="fade-up" data-aos-delay="350">
-                                <input type="text" id="boname" name="boname" value="" placeholder=" Owner’s Name">
-                                <span id="boname_error" style="color:red;"></span>
-                            </div>
-                            <div class="form-group" data-aos="fade-up" data-aos-delay="400">
-                                <select name="stores" id="stores">
-                                    <option value="">Select Option</option>
-                                    <option value="How many stores of you have?">How many stores of you have?</option>
-                                    <option value="Two Stores">Two Stores</option>
-                                    <option value="Five Stores">Five Stores</option>
-                                    <option value="Twelve Stores">Twelve Stores</option>
-                                </select>
-                                <span id="stores_error" style="color:red;"></span>
-                            </div>
                             <div class="form-group" data-aos="fade-up" data-aos-delay="450">
                                 <input type="text" id="phone" name="phone" value="" placeholder="Phone Number" onkeypress="return checkOnlyDigits(event)">
                                 <div id="errorMsg"></div>
@@ -366,8 +402,13 @@
                                 <input type="text" id="email" name="email" value="" placeholder="Email Address">
                                 <span id="email_error" style="color:red;"></span>
                             </div>
+                            <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+                                <textarea cols="4" required id="message" rows="6" placeholder="Messages"></textarea>
+                                <span id="message_error" style="color:red;"></span>
+                            </div>
+
                             <div class="form-group" data-aos="fade-up" data-aos-delay="550">
-                                <button type="button" onclick="return getcontact();" class="theme-btn btn-style-two">Submite form <span class="icon ti-arrow-circle-right"></span>
+                                <button type="submit" class="theme-btn btn-style-two">Submit form <span class="icon ti-arrow-circle-right"></span>
                                 </button>
                             </div>
                         </form>

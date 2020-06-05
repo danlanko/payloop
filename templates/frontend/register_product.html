@@ -1,0 +1,82 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block main_page %}
+    {% block menu1 %} {% endblock %}
+
+    <section class="product-banner services">
+        <div class="auto-container text-center">
+            <h2 style="color: whitesmoke">Selected Package </h2>
+            <h3>{{ package.name }}</h3>
+            <h3>NGN {{ payable|intcomma }}</h3>
+
+
+        </div>
+    </section>
+
+    <section class="pad pad-big four-circle three-divided">
+        <div class="auto-container">
+            <div class="title-tag">
+                <h3><span class="clr">Selected Modules</span></h3>
+            </div>
+            <div class="row df">
+                {% for item in product %}
+                    {% for s in s_modules %}
+                        {% if item.id == s %}
+                            <div class="col-xs-12 col-md-4 col-sm-6 three-divide">
+                                <div class="col-xs-6 circle-block"></div>
+                                <p>{{ item.name }}</p> <br />
+                                <img style="max-width: 50px" src="{{ item.icon.url }}" />
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="form-column col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                    {% if messages %}
+                        {% for message in messages %}
+                                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <span style="margin-left: 10px">{{ message }}</span>
+                                </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <span style="margin-left: 10px">{{ form.errors }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="sec-title">
+                        <h2 data-aos="fade-up" data-aos-delay="150">Please complete your registration</h2>
+                    </div>
+                    <div class="default-form contact-form">
+                        <form method="post" id="contact-form">
+                            {% csrf_token %}
+                            <p>
+                                <label for="f_name">First name:</label>
+                                <input type="text" name="first_name" maxlength="50" class="form-control" required id="id_first_name">
+                            </p>
+                            <p>
+                                <label for="l_name">Last name:</label>
+                                <input type="text" name="last_name" maxlength="50" class="form-control" required id="id_last_name">
+                            </p>
+                            {{ form.as_p }}
+                            <button type="submit" class="theme-btn btn-style-two">Submit Form</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock main_page %}
+
+

@@ -11,41 +11,21 @@
 
     <section>
         <div class="pricing-wrapper clearfix">
-            <div class="pricing-table">
-                <h3 class="pricing-title">Basic</h3>
-                <div class="price">₦60<sup>/ module</sup></div>
-                <ul class="table-list">
-                    <li>Item 1 <span>Something Nice</span></li>
-                    <li>Item 2 <span>Another Nice thing</span></li>
-                    <li>Item 3 <span class="unlimited">Design Caption</span></li>
-                </ul>
-                <div class="table-buy">
-                    <a href="#" class="pricing-action">Buy Now</a>
-                </div>
-            </div>
 
-            <div class="pricing-table recommended">
-                <h3 class="pricing-title">Premium</h3>
-                <div class="price">₦60<sup>/ module</sup></div>
-                <ul class="table-list">
-                    <li>Item 1 <span>Something Nice</span></li>
-                    <li>Item 2 <span>Another Nice thing</span></li>
-                    <li>Item 3 <span class="unlimited">Design Caption</span></li>
-                </ul>
-                <div class="table-buy">
-                    <a href="#" class="pricing-action">Buy Now</a>
+            {% for package in packages %}
+                <div class="pricing-table">
+                    <h3 class="pricing-title">{{ package.name }}</h3>
+                    <div class="price">₦60<sup>/ module</sup></div>
+                    <ul class="table-list">
+                        <li>Item 1 <span>Something Nice</span></li>
+                    </ul>
+                    <div class="table-buy">
+                        <a href="{% url 'register_product' package.id %}" class="pricing-action">Buy Now</a>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
 
-            <div class="pricing-table">
-                <h3 class="pricing-title">Custom</h3>
-                <div class="price"><sup>You don't know what you want? <br /> Talk to us</sup></div>
 
-                <div class="table-buy">
-                    <p>$200<sup>/ mes</sup></p>
-                    <a href="#" class="pricing-action">Contact us now</a>
-                </div>
-            </div>
         </div>
     </section>
 

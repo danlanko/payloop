@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.frontend.urls')),
     path('', include('apps.backend.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]
 
 admin.site.site_header = "PayLoop Admin Portal"

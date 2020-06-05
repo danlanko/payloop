@@ -1,108 +1,56 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Inventory</title><!-- Stylesheets -->
-    <link href="http://payloop.net/usertheme/css/bootstrap.css" rel="stylesheet">
-    <link href="http://payloop.net/usertheme/css/style.css" rel="stylesheet">
-    <link href="http://payloop.net/usertheme/css/aos.css" rel="stylesheet">
-    <link rel="shortcut icon" href="http://payloop.net/upload/logo/1552903469favicon.png" type="image/x-icon">
-    <link rel="icon" href="http://payloop.net/upload/logo/1552903469favicon.png" type="image/x-icon">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link href="http://payloop.net/usertheme/css/responsive.css" rel="stylesheet">
-	
-</head>
-
-<body>
-    <div class="page-wrapper">
-        <div class="preloader"></div><!-- Main Header-->
-		        <header class="main-header">
-            <!-- Main Box -->
-            <div class="main-box">
-                <div class="auto-container">
-                    <div class="outer-container clearfix">
-                        <div class="logo-box">
-                            <div class="logo"><a href="http://payloop.net/Home"><img src="http://payloop.net/upload/logo/1552911260logo.png" alt="" height="50"></a></div>
-                        </div>
-                        <!--Nav Outer-->
-                        <div class="nav-outer clearfix">
-                            <!-- Main Menu -->
-                            <nav class="main-menu">
-                                <div class="navbar-header">
-                                    <!-- Toggle Button --><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-                                <div class="navbar-collapse collapse scroll-nav clearfix">
-                                    <ul class="navigation clearfix">
-                                        <li class="dropdown current"><a href="http://payloop.net/home">Home</a>
-                                            <ul class="dropdown-large">
-                                                <div class="container">
-                                                    <div class="col-md-3 col-sm-6"><span class="title"><img src="http://payloop.net/usertheme/images/website.png" alt=""><span> Websites</span>
-                                                            <p>Build great user experience</p>
-                                                        </span><span><a href="#">Website Builder</a></span><span><a href="#">eCommerce</a></span><span><a href="#">Blogs</a></span><span><a href="#">Forums</a></span><span><a href="#">Slides</a></span><span><a href="#">Live Chat</a></span></div>
-                                                    <div class="col-md-3 col-sm-6"><span class="title"><img src="http://payloop.net/usertheme/images/sales.png" alt=""><span> Sales</span>
-                                                            <p>Boost your success rate</p>
-                                                        </span><span><a href="#">Website Builder</a></span><span><a href="#">eCommerce</a></span><span><a href="#">Blogs</a></span><span><a href="#">Forums</a></span><span><a href="#">Slides</a></span><span><a href="#">Live Chat</a></span></div>
-                                                    <div class="col-md-3 col-sm-6"><span class="title"><img src="http://payloop.net/usertheme/images/operation.png" alt=""><span> Operations</span>
-                                                            <p>It's all about efficiency</p>
-                                                        </span><span><a href="#">Website Builder</a></span><span><a href="#">eCommerce</a></span><span><a href="#">Blogs</a></span><span><a href="#">Forums</a></span><span><a href="#">Slides</a></span><span><a href="#">Live Chat</a></span></div>
-                                                    <div class="col-md-3 col-sm-6"><span class="title"><img src="http://payloop.net/usertheme/images/tools.png" alt=""><span> Productivity Tools</span>
-                                                            <p>Great Tools = Happy People</p>
-                                                        </span><span><a href="#">Website Builder</a></span><span><a href="#">eCommerce</a></span><span><a href="#">Blogs</a></span><span><a href="#">Forums</a></span><span><a href="#">Slides</a></span><span><a href="#">Live Chat</a></span></div>
-                                                </div>
-                                            </ul>
-                                        </li>
-                                        <li><a href="http://payloop.net/Pricing">Pricing</a></li>
-                                        <li><a href="http://payloop.net/Products">Products</a></li>
-                                        <li><a href="http://payloop.net/Services">Services</a></li>
-                                        <li><a href="http://payloop.net/Inventory">Inventory</a></li>
-                                        <li><a href="#">Contact Us</a></li>
-                                        <div class="other-links"><a href="http://payloop.net/Login" class="theme-btn btn-style-one">SIGN IN</a></div>
-                                    </ul>
-                                </div>
-                            </nav><!-- Main Menu End-->
-                            <!--Other Links-->
-                        </div>
-                        <!--Nav Outer End-->
-                    </div>
-                </div>
-            </div>
-        </header>
-		<style>
-.main-header .main-box {
-            position: fixed;
-            top: 0px;
-            z-index: 999;
-            opacity: 1;
-            visibility: visible;
-            background-color: #ffffff !important;
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block page_css  %}
+    <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px; height: 0; overflow: hidden;
         }
 
-        .main-header .main-box:after {
-            opacity: 1;
-        }
-
-        .pricing {
-            margin-top: 100px;
-        }
-
-        header.main-header .main-menu .navigation>li.dropdown ul.dropdown-large {
-            top: 70px;
+        .video-container iframe,
+        .video-container object,
+        .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         }
     </style>
-<section class="product-banner crm">
+{% endblock page_css %}
+
+{% block main_page %}
+
+        {% block menu1 %} {% endblock %}
+        <section class="product-banner crm">
             <div class="auto-container text-center">
-                <h3>Maximize your <b>warehouse</b> efficiency</h3>
-                <p>Modern online warehouse management software.</p>
-                <button class="btn btn-theme1">Start Now</button>
-                <button class="btn btn-theme1 outline">Schedule A Demo</button>
+                <h3>Payloop Enterprise Resource Planning</h3>
+                <p>{{ object.name }} Module</p>
+                <a href="{% url 'homepage' %}#pricing"><button class="btn btn-theme1">Start Now</button></a>
+                <button class="btn btn-theme1 outline" data-toggle="modal" data-target="#demoModal">Schedule A Demo</button>
+
             </div>
         </section>
+        {% if messages %}
+            {% for message in messages %}
+                    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span style="margin-left: 10px">{{ message }}</span>
+                    </div>
+            {% endfor %}
+        {% endif %}
+        {% if form.errors %}
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span style="margin-left: 10px">{{ form.errors }}</span>
+            </div>
+        {% endif %}
         <section class="product-detail">
             <div class="auto-container">
                 <div class="por fb image-block">
-                    <img src="http://payloop.net/upload/Inventory/1554442716sales1.gif" alt="">
-                    <img src="http://payloop.net/upload/Inventory/1554442716sales1.gif" alt="" class="abs">
+                    <img src="{{ object.gallery1.url }}" alt="{{ object.name }}">
+                    <img src="{{ object.gallery1.url }}" alt="{{ object.name }}" class="abs">
                 </div>
             </div>
         </section>
@@ -110,389 +58,56 @@
             <div class="auto-container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Improve performance & process time</h3>
-                        <p>Better organize your warehouse with the smart double entry inventory system.</p>
-                        <h6 class=""><p>Get the most efficient stocking method and improve all your internal operations. Odoo&#39;s double-entry inventory has no stock input, output or transformation. Instead, all operations are stock moves between locations.</p></h6>
+                        <h3>{{ object.name }} Module</h3>
+                        <p>
+                            {{ object.content|safe }}
+                        </p>
                     </div>
-                    <div class="col-md-6">
-                        <img src="http://payloop.net/upload/Inventory/1554442907Sales-Quote.png" alt="" width="100%">
+                    <div class="col-md-6 video-container" style="padding-top: 0!important; padding-bottom: 25.25%;">
+
+                        <style>
+                            .embed-container
+                                { position: initial; padding-bottom: 60%; height: 0;  max-width: 100%; }
+                            .embed-container iframe,
+                            .embed-container object,
+                            .embed-container embed
+                                { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+                        </style>
+
+                        <div class='embed-container'>
+                            <iframe src='https://www.youtube.com/embed/{{ object.video }}' frameborder='0' allowfullscreen></iframe>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <section class="pad pad-big four-circle three-divided">
-            <div class="auto-container">
-                <div class="title-tag">
-                    <h3><span class="clr">Advanced features made simple</h3>
-                    <p>Use cutting-edge automation and advanced routes to manage any warehouse</p>
-                </div>
-                <div class="row df">
-                    <div class="col-xs-12 col-md-4 col-sm-6 three-divide">
-                        <div class="row">
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-truck fa-2x"></i>
+        <!--Modal -->
+                <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please complete our demo form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                        <form method="post" action="{% url 'demo_view' object.id %}">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                  <div class="form-group">
+                                        {{ form }}
+                                  </div>
                             </div>
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-users fa-2x"></i>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
-                        </div>
-                        <p>Drop-shipping</p>
-                    </div>
-                    <div class="col-xs-12 col-md-4 col-sm-6 three-divide">
-                        <div class="row">
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-truck fa-2x"></i>
-                            </div>
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-truck fa-2x"></i>
-                            </div>
-                        </div>
-                        <p>Drop-shipping</p>
-                    </div>
-                    <div class="col-xs-12 col-md-4 col-sm-6 three-divide m-auto">
-                        <div class="row">
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-industry  fa-2x"></i>
-                            </div>
-                            <div class="col-xs-6 circle-block">
-                                <i class="fa fa-industry  fa-2x"></i>
-                            </div>
-                        </div>
-                        <p>Drop-shipping</p>
-                    </div>                    
-                </div>
-            </div>
-        </section>
-        <section class="product-intro">
-            <div class="auto-container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>Less stock, no stockouts</h3>
-                        <p>with fully automated replenishment.</p>
-                        <h6 class=""><p>Use order points and automated RFQs to make your supply chain more efficient than ever.</p></h6>
-                        <div class="client-reivew">
-                            <div class="client-img">
-                                <img src="http://payloop.net/upload/Inventory/1554443227author-thumb-1.jpg" alt="">
-                            </div>
-                            <div class="client-detail">
-                                <p><p>&ldquo;We found the Inventory app to be a powerful tool to better organize our warehouse. It&#39;s simple and easily customizable.&rdquo;</p></p>
-                                <p><i> - Mario Riva, COO</i></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="http://payloop.net/upload/Inventory/1554442907sales1.gif" alt="">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="pad pb-0 report-process">
-            <div class="auto-container por p-tag">
-                <div class="left-content">
-                    <div class="title-tag">
-                        <h3>Clear and complete reporting</h3>
-                        <p>Stay in the know with real-time reports.</p>                    
-                    </div>
-                    <h5><p>Make smarter decisions with real-time dynamic reports that you can save and share with anybody. Keep key information at your fingertips with custom dashboards.</p></h5>
-                </div>
-                <img src="http://payloop.net/upload/Inventory/1554442907reporting.gif" alt="" width="100%">
-            </div>
-        </section>
-        <section class="four-block bg-same">
-            <div class="auto-container">
-                <div class="title-tag text-center">
-                    <h3>Fully integrated with other Payloop Apps</h3>
-                </div>
-                <div class="row">
-                                        <div class="col-md-3 col-sm-6  col-xs-6 col-12 ">
-                        <div class="blocks">
-                            <img src="http://payloop.net/upload/Inventory/1554379842invoice.png" alt="">
-                            <img src="http://payloop.net/upload/Inventory/1554379842invoice.png" alt="" class="abs">
-                            <h3>Website</h3>
-                            <p>Create beautiful online quotations in a few clicks by dragging and dropping pre-made, fully customizable building blocks.</p>                            <a href="#!">DISCOVER</a>
-                        </div>
-                    </div>
-                                    <div class="col-md-3 col-sm-6  col-xs-6 col-12 ">
-                        <div class="blocks">
-                            <img src="http://payloop.net/upload/Inventory/1554379805esignature.png" alt="">
-                            <img src="http://payloop.net/upload/Inventory/1554379805esignature.png" alt="" class="abs">
-                            <h3>eSingnature</h3>
-                            <p>Send, sign and approve documents online. Upload your PDF and drag &amp; drop fields easily.</p>                            <a href="#!">DISCOVER</a>
-                        </div>
-                    </div>
-                                    <div class="col-md-3 col-sm-6  col-xs-6 col-12 ">
-                        <div class="blocks">
-                            <img src="http://payloop.net/upload/Inventory/1554379762sale.png" alt="">
-                            <img src="http://payloop.net/upload/Inventory/1554379762sale.png" alt="" class="abs">
-                            <h3>CRM</h3>
-                            <p>Keep track of all interactions with your opportunities and customers and improve&nbsp;</p>                            <a href="#!">DISCOVER</a>
-                        </div>
-                    </div>
-                                    <div class="col-md-3 col-sm-6  col-xs-6 col-12 ">
-                        <div class="blocks">
-                            <img src="http://payloop.net/upload/Inventory/1554379886mass-mailing.png" alt="">
-                            <img src="http://payloop.net/upload/Inventory/1554379886mass-mailing.png" alt="" class="abs">
-                            <h3>Accounting</h3>
-                            <p>Create invoices automatically based on sales orders, delivery orders, or contracts. View all of your customer account information from one location.</p>                            <a href="#!">DISCOVER</a>
-                        </div>
-                    </div>
-                                </div>
-            </div>
-        </section><section class="contact-section">
-            <div class="auto-container">
-                <div class="row clearfix">
-                    <!--Image Column-->
-                    <div class="image-column col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="100">
-                        <div class="inner">
-                            <figure class="image"><img src="http://payloop.net/upload/contact/1554557633featured-image-4.png" alt=""></figure>
-                        </div>
-                    </div>
-                    <!--Form Column-->
-                    <div class="form-column col-md-6 col-sm-12 col-xs-12">
-                        <div class="sec-title">
-                            <h2 data-aos="fade-up" data-aos-delay="150">GET IN TOUCH</h2>
-                            <div class="desc-text" data-aos="fade-up" data-aos-delay="250"><p>Contact us about anything related to our company or services,We&#39;ll do our best to get back to you as soon as possible.</p></div>
-                        </div>
-                        <!--Contact Form-->
-                        <div class="default-form contact-form">
-                            <form method="post" id="contact-form">
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="300">
-									<input type="text" id="bname" name="bname" value="" placeholder="Name">
-									<span id="bname_error" style="color:red;"></span>
-								</div>
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="350">
-									<input type="text" id="boname" name="boname" value="" placeholder=" Owner’s Name">
-									<span id="boname_error" style="color:red;"></span>
-								</div>
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="400">
-									<select name="stores" id="stores">
-                                        <option value="">Select Option</option>
-                                        <option value="How many stores of you have?">How many stores of you have?</option>
-                                        <option value="Two Stores">Two Stores</option>
-                                        <option value="Five Stores">Five Stores</option>
-                                        <option value="Twelve Stores">Twelve Stores</option>
-                                    </select>
-									<span id="stores_error" style="color:red;"></span>
-								</div>
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="450">
-									<input type="text" id="phone" name="phone" value="" placeholder="Phone Number" onkeypress="return checkOnlyDigits(event)">
-									<div id="errorMsg"></div>
-									<span id="phone_error" style="color:red;"></span>
-								</div>
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="500">
-									<input type="text" id="email" name="email" value="" placeholder="Email Address">
-									<span id="email_error" style="color:red;"></span>
-								</div>
-                                <div class="form-group" data-aos="fade-up" data-aos-delay="550">
-									<button type="button" onclick="return getcontact();" class="theme-btn btn-style-two">Submite form <span class="icon ti-arrow-circle-right"></span>
-									</button>
-								</div>
-                            </form>
-                        </div>
-                        <!--End Contact Form-->
-                    </div>
-                </div>
-            </div>
-        </section>
-<!--Footer Style One-->
-        <footer class="footer-style-one" data-aos="fade-up" data-aos-delay="300">
-            <!--Footer Upper-->
-            <div class="footer-upper">
-                <div class="auto-container">
-                    <div class="row clearfix">
-                        <!--Big Column-->
-                        <div class="big-column col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <div class="footer-column">
-                                <div class="footer-widget about-widget">
-                                    <div class="widget-inner">
-                                        <div class="logo"><img src="http://payloop.net/usertheme/images/logo-white.png" alt="" height="70"></div>
-                                        <p>Payloop is a suite of open source business apps that cover all your company needs: CRM, eCommerce, accounting, inventory, point of sale, project management, etc.</p>
-                                        <p>Payloop's unique value proposition is to be at the same time very easy to use and fully integrated.</p>
-                                        <div class="copyright">&copy; 2019 Payloop.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Big Column-->
-                        <div class="big-column col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
-                                <!--Footer Column-->
-                                <div class="footer-column col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-inner">
-                                            <h3>Company</h3>
-                                            <div class="links">
-                                                <ul>
-                                                    <li><a href="#">About us</a></li>
-                                                    <li><a href="#">Careers</a></li>
-                                                    <li><a href="#">Contact us </a></li>
-                                                    <li><a href="#">Customers</a></li>
-                                                    <li><a href="#">Career</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Footer Column-->
-                                <div class="footer-column col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-inner">
-                                            <h3>Resources</h3>
-                                            <div class="links">
-                                                <ul>
-                                                    <li><a href="#">Library</a></li>
-                                                    <li><a href="#">Support</a></li>
-                                                    <li><a href="#">Blog</a></li>
-                                                    <li><a href="#">Live webinars</a></li>
-                                                    <li><a href="#">API & Developers</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Footer Column-->
-                                <div class="footer-column col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-inner">
-                                            <h3>Solutions</h3>
-                                            <div class="links">
-                                                <ul>
-                                                    <li><a href="#">Consumer</a></li>
-                                                    <li><a href="#">Financial Services</a></li>
-                                                    <li><a href="#">Media & Entertainment</a></li>
-                                                    <li><a href="#">SaaS</a></li>
-                                                    <li><a href="#">Infrastructure</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Footer Column-->
-                                <div class="footer-column col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <div class="footer-widget follow-widget">
-                                        <div class="widget-inner">
-                                            <h3>Follow</h3>
-                                            <div class="social-links">
-                                                <ul class="clearfix">
-                                                    <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
-                                                    <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                                    <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                                                    <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                                                    <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-double-up"></span></div>
-    <script src="http://payloop.net/usertheme/js/jquery.js"></script>
-    <script src="http://payloop.net/usertheme/js/bootstrap.min.js"></script>
-    <script src="http://payloop.net/usertheme/js/pagenav.js"></script>
-    <script src="http://payloop.net/usertheme/js/jquery.scrollTo.js"></script>
-    <script src="http://payloop.net/usertheme/js/jquery.fancybox.pack.js"></script>
-    <script src="http://payloop.net/usertheme/js/owl.js"></script>
-    <script src="http://payloop.net/usertheme/js/wow.js"></script>
-    <script src="http://payloop.net/usertheme/js/validate.js"></script>
-    <script src="http://payloop.net/usertheme/js/script.js"></script>
-    <script src="http://payloop.net/usertheme/js/aos.js"></script>
-    <script>        
-        AOS.init({
-            useClassNames: true,
-            initClassName: false,
-            animatedClassName: 'animated',
-            offset: 20,
-        });
-    </script>
-	<script>
-		function getcontact(){
-			$("#bname_error").html("");
-			$("#boname_error").html("");
-			$("#stores_error").html("");
-			$("#phone_error").html("");
-			$("#email_error").html("");
-			
-			var bname = $("#bname").val();
-			var boname = $("#boname").val();
-			var stores = $("#stores").val();
-			var phone = $("#phone").val();
-			var email = $("#email").val();
-			$evalidate = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-			var temp = 0;
-				if(bname == ""){
-            		$("#bname_error").html("Name is required.");
-            		temp++;
-        		}
-				if(boname == ""){
-            		$("#boname_error").html("Owner Name is required.");
-            		temp++;
-        		}
-				if(stores == ""){
-            		$("#stores_error").html("select option.");
-            		temp++;
-        		}
-				if(phone == ""){
-            		$("#phone_error").html("Phone is required.");
-            		temp++;
-        		}
-				if(email == ""){
-            		$("#email_error").html("Email is required.");
-            		temp++;
-        		}else{
-					if(email.match($evalidate)){
-		  		}else{
-          			temp++;
-            		$("#email_error").html("Invalid Email!!");
-          		}
-				}
-				
-				if(temp != 0){
-            		return false;     
-        		}else{
-					
-					$.ajax({
-						type: "POST",
-						url: "http://payloop.net/home/contact?bname="+bname+"&boname="+boname+"&stores="+stores+"&phone="+phone+"&email="+email,
-						cache: false,
-						success: function(result){
-							if(result > 0){
-								document.getElementById('alert').style.display = 'block';
-								document.getElementById('bname').value= '';
-								document.getElementById('boname').value= '';
-								document.getElementById('stores').value= '';
-								document.getElementById('phone').value= '';
-								document.getElementById('email').value= '';
-								
-								
-							}else{
-								document.getElementById('alert').style.display = 'none';
-							}
-						}
-					});
-				}
-		}
-	</script>
-	<script type="text/javascript">
-		function checkOnlyDigits(e) {
-			e = e ? e : window.event;
-			var charCode = e.which ? e.which : e.keyCode;
-			if (charCode < 48 || charCode > 57) {
-				document.getElementById('errorMsg').style.display = 'block';
-				document.getElementById('errorMsg').style.color = 'red';
-				document.getElementById('errorMsg').innerHTML = 'OOPs! Only digits allowed.';
-				return false;
-			} else {
-				document.getElementById('errorMsg').style.display = 'none';
-				return true;
-			}
-		}
-</script>
-</body>
+                        </form>
 
-</html>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- End Modal -->
+{% endblock main_page %}

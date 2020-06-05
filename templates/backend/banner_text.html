@@ -1,0 +1,120 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block page_css %}
+        <link href="{% static 'backend/plugins/switchery/switchery.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock page_css %}
+
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Banner Text</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Payloop</a></li>
+                    <li class="breadcrumb-item active">Banner Text Page</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+{% block page_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-md-12 ">
+                            <div class="form-row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Activate</label>
+                                    {{ form.activate }}
+                                    <br />
+                                    <label for="">Title</label>
+                                    {{ form.title }}
+                                    <br />
+
+                                    <label for="">Highlight</label>
+                                    {{ form.highlight }}
+                                    <br />
+
+                                     <label for="">Content</label>
+                                    {{ form.content }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="basic-datatable" class="table dt-responsive nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S/N</th>
+                                                        <th>Is Active</th>
+                                                        <th>Title</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                {% if object_list %}
+                                                    {% for item in object_list %}
+                                                        <tr>
+                                                            <td>
+                                                                {{ forloop.counter }}
+                                                            </td>
+                                                            <td>
+                                                                {% if item.activate %}
+                                                                    <label class="badge badge-success">{{ item.activate }}</label>
+                                                                {% else %}
+                                                                    <label class="badge badge-danger">{{ item.activate }}</label>
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>{{ item.title }}</td>
+                                                            <td>
+                                                                <a href="{% url 'banner_text_update' item.id %}"><span class="fa fa-edit fa-2x"></span></a>
+                                                                <a href="{% url 'banner_delete' item.id %}" class="confirm-action"><span class="text-danger fa fa-trash fa-2x"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <h3 style="color: darkred">Nothing added yet</h3>
+                                                {% endif %}
+                                                </tbody>
+                                            </table>
+
+                                        </div> <!-- end card body-->
+                                    </div> <!-- end card -->
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect waves-light" type="submit">Submit form</button>
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row-->
+{% endblock page_content %}
+
+
+{% block page_js %}
+    <!-- ckeditor script files -->
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <!-- Validation custom js-->
+    <script src="{% static 'backend/assets/pages/validation-demo.js' %}"></script>
+    <script src="{% static 'backend/plugins/switchery/switchery.min.js' %}"></script>
+{% endblock page_js %}
