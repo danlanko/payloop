@@ -47,7 +47,7 @@
                                 {% block menu1 %}
                                 <div class="navbar-collapse collapse scroll-nav clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="#home">Home</a></li>
+                                        <li class="current"><a href="{% url 'homepage' %}#home">Home</a></li>
                                         <li class="dropdown" ><a href="#">Products</a>
                                             <ul class="dropdown-large">
                                                 <div class="container">
@@ -79,10 +79,10 @@
                                                 </div>
                                             </ul>
                                         </li>
-                                        <li><a href="#pricing">Pricing</a></li>
-                                        <li><a href="#service">Services</a></li>
-                                        <li><a href="#inventory">Gallery</a></li>
-                                        <li><a href="#contact">Contact Us</a></li>
+                                        <li><a href="{% url 'homepage' %}#pricing">Pricing</a></li>
+                                        <li><a href="{% url 'homepage' %}#service">Services</a></li>
+                                        <li><a href="{% url 'homepage' %}#inventory">Gallery</a></li>
+                                        <li><a href="{% url 'homepage' %}#contact">Contact Us</a></li>
                                         <div class="other-links">
                                             <a href="{% url 'login' %}" class="theme-btn btn-style-one"><span class="fa fa-sign-in"></span> Sign In</a>
 {#                                            <a href="#" class="theme-btn btn-style-one"><span class="fa fa-user"></span> Register</a>#}
@@ -94,8 +94,8 @@
                                 {% block menu2 %}
                                 <div class="navbar-collapse collapse scroll-nav clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="https://www.payloop.net#home">Home</a></li>
-                                        <li class="dropdown" ><a href="https://www.payloop.net#">Products</a>
+                                        <li class="current"><a href="{% url 'homepage' %}#home">Home</a></li>
+                                        <li class="dropdown" ><a href="{% url 'homepage' %}#">Products</a>
                                             <ul class="dropdown-large">
                                                 <div class="container">
                                                     <div class="col-md-6 col-sm-6">
@@ -126,10 +126,10 @@
                                                 </div>
                                             </ul>
                                         </li>
-                                        <li><a href="https://www.payloop.net#pricing">Pricing</a></li>
-                                        <li><a href="https://www.payloop.net#service">Services</a></li>
-                                        <li><a href="https://www.payloop.net#inventory">Gallery</a></li>
-                                        <li><a href="https://www.payloop.net#contact">Contact Us</a></li>
+                                        <li><a href="{% url 'homepage' %}#pricing">Pricing</a></li>
+                                        <li><a href="{% url 'homepage' %}#service">Services</a></li>
+                                        <li><a href="{% url 'homepage' %}#inventory">Gallery</a></li>
+                                        <li><a href="{% url 'homepage' %}#contact">Contact Us</a></li>
                                         <div class="other-links">
                                             <a href="{% url 'login' %}" class="theme-btn btn-style-one"><span class="fa fa-sign-in"></span> Sign In</a>
 {#                                            <a href="#" class="theme-btn btn-style-one"><span class="fa fa-user"></span> Register</a>#}

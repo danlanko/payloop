@@ -90,8 +90,8 @@
                             {% if package.p_type == 3 %}
                                 {% if forloop.first %}
                                     <form action="{% url 'process_modular' package.id %}" method="post">
+                                        {% csrf_token %}
                                 {% endif %}
-                                    {% csrf_token %}
                                         <input type="checkbox" name="{{ item.id }}" value="{{ item.id }}" /> <span style="text-align: left">{{ item.name }} (₦{{ item.amount|intcomma }})</span>  <br />
                                     {% if forloop.last %}
                                         <button style="margin: 5px 0 15px 0" type="submit" class="btn btn-danger btn-lg " >Get Started</button>
