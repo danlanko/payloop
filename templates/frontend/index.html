@@ -60,6 +60,19 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% if edu != None %}
+                    <div class="service-style-one col-md-3 col-sm-6 col-xs-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="inner-box">
+                        <div class="icon">
+                            <figure class="image"><img src="{{ edu.icon.url }}" alt=""></figure>
+                        </div>
+                        <h3><a href="{% url 'education' %}">{{ edu.name }}</a></h3>
+                        <div class="text"><p>{{ item.content|safe|truncatechars:65 }}</p></div>
+                        <div class="link-box"><a href="{% url 'education'  %}">See more <span class="icon ti-arrow-circle-right"></span></a></div>
+                    </div>
+                </div>
+                {% endif %}
+
 
             </div>
 {#            <div class="text-center fb">#}
@@ -104,13 +117,15 @@
                             {% endif %}
                         {% endfor %}
                     </ul>
-                    {% if package.p_type is 2%}
+                    {% if package.p_type is 2 %}
                         <a class="btn btn-danger btn-lg" style="margin: 5px 0 15px 0" type="button" href="{% url 'register_product' package.id 'custom' %}">Talk to us</a>
                     {% elif package.p_type is 1 %}
                         <a class="btn btn-danger btn-lg" style="margin: 5px 0 15px 0" type="button" href="{% url 'register_product' package.id 'all_package' %}">Get Started</a>
                     {% endif %}
                 </div>
             {% endfor %}
+            {}
+
 
         </div>
     </section>

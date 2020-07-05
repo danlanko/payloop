@@ -48,7 +48,8 @@
                                 <div class="navbar-collapse collapse scroll-nav clearfix">
                                     <ul class="navigation clearfix">
                                         <li class="current"><a href="{% url 'homepage' %}#home">Home</a></li>
-                                        <li class="dropdown" ><a href="#">Products</a>
+                                        <li><a href="{% url 'education' %}">Education</a></li>
+                                        <li class="dropdown" ><a href="#">ERP</a>
                                             <ul class="dropdown-large">
                                                 <div class="container">
                                                     <div class="col-md-6 col-sm-6">
@@ -63,19 +64,6 @@
                                                             </span>
                                                         {% endfor %}
                                                     </div>
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <span class="title">
-                                                            <img src="{% static 'usertheme/images/sales.png' %}" alt="">
-                                                            <span> Payloop Education</span>
-                                                            <p>Pack of educational modules</p>
-                                                        </span>
-                                                        {% for item in base_products2  %}
-                                                            <span>
-                                                                <a href="{% url 'product_detail' item.id %}">{{ item.name }}</a>
-                                                            </span>
-                                                        {% endfor %}
-                                                    </div>
-
                                                 </div>
                                             </ul>
                                         </li>
@@ -94,15 +82,18 @@
                                 {% block menu2 %}
                                 <div class="navbar-collapse collapse scroll-nav clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class="current"><a href="{% url 'homepage' %}#home">Home</a></li>
-                                        <li class="dropdown" ><a href="{% url 'homepage' %}#">Products</a>
+                                        <li class="current">
+                                            <a href="{% url 'homepage' %}#home">Home</a>
+                                        </li>
+                                        <li><a href="{% url 'education' %}">Education</a></li>
+                                        <li class="dropdown" ><a href="#">ERP</a>
                                             <ul class="dropdown-large">
                                                 <div class="container">
                                                     <div class="col-md-6 col-sm-6">
                                                         <span class="title">
                                                             <img src="{% static 'usertheme/images/website.png' %}" alt="">
                                                             <span> Payloop ERP</span>
-                                                            <p>Open source business apps</p>
+                                                            <p>Enterprise Resource Planning Customizable for your business</p>
                                                         </span>
                                                         {% for item in base_products  %}
                                                             <span>
@@ -110,19 +101,6 @@
                                                             </span>
                                                         {% endfor %}
                                                     </div>
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <span class="title">
-                                                            <img src="{% static 'usertheme/images/sales.png' %}" alt="">
-                                                            <span> Education System</span>
-                                                            <p>deployable on Odoo platform</p>
-                                                        </span>
-                                                        {% for item in base_products2  %}
-                                                            <span>
-                                                                <a href="{% url 'product_detail' item.id %}">{{ item.name }}</a>
-                                                            </span>
-                                                        {% endfor %}
-                                                    </div>
-
                                                 </div>
                                             </ul>
                                         </li>

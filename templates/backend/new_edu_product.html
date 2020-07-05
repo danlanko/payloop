@@ -1,0 +1,107 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Educational Product</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Payloop</a></li>
+                    <li class="breadcrumb-item active">New Product</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+{% block page_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom02">Product Name <small style="color: darkred">*</small></label>
+                                    {{ form.name }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Name is required</div>
+                                </div>
+                                 <div class="col-md-6 mb-3">
+                                    <label for="">Video Url <small style="color: darkred">*</small>  <small style="color: black">ID: nQZVHAOGc7U</small></label>
+                                    {{ form.video }}
+
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Copy Only the video ID ..nQZVHAOGc7U</div>
+                                </div>
+                            </div>
+                             <div class="form-row">
+
+
+                                 <div class="col-md-6 mb-3">
+                                    <label for="validationCustom02">Product icon <small style="color: darkred">*</small></label>
+                                    {{ form.icon }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">icon is required</div>
+                                </div>
+                                 <div class="col-md-3 mb-3">
+                                    <label for="">Amount <small style="color: darkred">*</small></label>
+                                    {{ form.amount }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Amount is required</div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Gallery Image 1 <small style="color: darkred">*</small></label>
+                                    {{ form.gallery1 }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Gallery Image 1 is required</div>
+                                </div>
+
+                                 <div class="col-md-6 mb-3">
+                                    <label for="validationCustom02">Gallery Image 2</label>
+                                    {{ form.gallery2 }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="">Content</label>
+                                    {{ form.content }}
+                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="invalid-feedback">Invalid Youtube URL .. https://www.youtube.com/watch?v=nQZVHAOGc7U</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary waves-effect waves-light" type="submit">Submit form</button>
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row-->
+{% endblock page_content %}
+
+
+{% block page_js %}
+    <!-- ckeditor script files -->
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <!-- Validation custom js-->
+    <script src="{% static 'backend/assets/pages/validation-demo.js' %}"></script>
+{% endblock page_js %}

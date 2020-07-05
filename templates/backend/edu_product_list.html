@@ -1,0 +1,78 @@
+{% extends 'backend/base.html' %}
+{% load static %}
+
+{% block page_css %}
+    <link href="{% static 'backend/plugins/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/buttons.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'backend/plugins/datatables/select.bootstrap4.css' %}" rel="stylesheet" type="text/css" />
+{% endblock page_css %}
+
+{% block page %}
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Product List</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Payloop</a></li>
+                    <li class="breadcrumb-item active">Product List</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock page %}
+    <!-- end page title -->
+    {% block page_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="basic-datatable" class="table  nowrap">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>icon-preview</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if object_list %}
+                            {% for item in object_list %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>
+                                        {% if item.category is 1 %}
+                                            Payloop
+                                        {% else %}
+                                            Education
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <img style="max-width: 20px" src="{{ item.icon.url }}" />
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'edit_edu_product' item.id %}"><span class="fa fa-edit"></span> Edit   </a>
+                                        <a href="{% url 'delete_product' item.id %}" class="confirm-action"><span class="text-danger fa fa-trash"></span> Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <h2 style="color: darkred">No product added yet.</h2>
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+    <!-- end row-->
+    {% endblock page_content %}
