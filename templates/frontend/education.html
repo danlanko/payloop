@@ -27,7 +27,7 @@
             <div class="auto-container text-center">
                 <h3>Payloop Education </h3>
                 <p>Education Module</p>
-                <a href="{% url 'homepage' %}#pricing"><button class="btn btn-theme1">Start Now</button></a>
+                <a href="{% url 'register_product' 1 'education' %}"><button class="btn btn-theme1">Start Now</button></a>
                 <button class="btn btn-theme1 outline" data-toggle="modal" data-target="#demoModal">Schedule A Demo</button>
 
             </div>
@@ -46,43 +46,36 @@
                 <span style="margin-left: 10px">{{ form.errors }}</span>
             </div>
         {% endif %}
-        <section class="product-detail">
+        <section class="pad pad-big four-circle">
             <div class="auto-container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="por fb image-block">
-                            <img src="{{ object.gallery1.url }}" alt="{{ object.name }}">
-                        </div>
-                    </div>
-                    <div class="col-md-6 video-container" style="padding-top: 0!important; padding-bottom: 25.25%;">
-                        <style>
-                            .embed-container
-                                { position: initial; padding-bottom: 60%; height: 0;  max-width: 100%; }
-                            .embed-container iframe,
-                            .embed-container object,
-                            .embed-container embed
-                                { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-                        </style>
-
-                        <div class='embed-container'>
-                            <iframe src='https://www.youtube.com/embed/{{ object.video }}' frameborder='0' allowfullscreen></iframe>
-                        </div>
-
-                    </div>
+                <div class="row df">
+                    {% for item in product %}
+                        <div class="col-xs-3 col-md-2" style="margin-bottom: 32px;" data-toggle="tooltip" data-placement="top" title="{{ item.name }}">
+                            <img style="max-width: 50px" src="{{ item.icon.url }}" />
+                        </div> <br />
+                    {% endfor %}
                 </div>
-                <div class="row" style="margin-top:25px;">
-                    <div class="col-md-6">
-                        <h3>{{ object.name }} Module</h3>
-                        <p>
-                            {{ object.content|safe }}
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="por fb image-block">
-                            <img src="{{ object.gallery2.url }}" alt="{{ object.name }}">
+            </div>
+        </section>
+        <section>
+            <div class="auto-container">
+                {% for object in product %}
+                    <div class="row" style="margin-top:25px;">
+                        <div class="col-md-8">
+                            <h3>{{ object.name }} Module</h3>
+                            <p>
+                                {{ object.content|safe }}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="por fb image-block">
+                                {% if object.gallery1 %}
+                                    <img src="{{ object.gallery1.url }}" style="width: 100%" alt="{{ object.name }}">
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
         <!--Modal -->

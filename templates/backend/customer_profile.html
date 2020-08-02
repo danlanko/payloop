@@ -16,7 +16,6 @@
 {% endblock page %}
     <!-- end page title -->
     {% block page_content %}
-
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -147,58 +146,40 @@
                                 <tr>
                                     <th>Action</th>
                                     <td>
-                                        <a href="{% url 'generate_ref' object.id %}"><button class="btn btn-success"><i class="fa fa-money"></i>Pay Now</button></a>
+                                        <a href="{% url 'generate_ref' object.id %}"><button class="btn btn-success">Pay Now</button></a>
                                     </td>
                                 </tr>
 
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <!-- end row-->
     {% endblock page_content %}
 
 {% block page_js %}
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     {% if ref_id %}
-    <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-    <script>
-
-        function payWithRave() {
-            var x = getpaidSetup({
-                PBFPubKey: "FLWPUBK-0f7bc94d7cd0d202231aad73a438101d-X",
-                customer_email: "{{ object.user.email }}",
-                amount: {{ payable }},
-                customer_phone: "{{ object.phone }}",
-                currency: "NGN",
-                txref: "{{ ref_id }}",
-                meta: [{
-                    metaname: "flightID",
-                    metavalue: "AP1234"
-                }],
-                onclose: function() {
-                    window.location = '{% url 'customer_profile' object.id  %}';
-                },
-                callback: function(response) {
-                    var txref = response.tx.txRef; // collect txRef returned and pass to a server page to complete status check.
-                    console.log("This is the response returned after a charge", response);
-                    if (
-                        response.tx.chargeResponseCode == "00" ||
-                        response.tx.chargeResponseCode == "0"
-                    ) {
-                        window.location = '{% url 'verify_payment' object.id ref_id  %}';
-
-                    } else {
-                        window.location = '{% url 'customer_profile' object.id  %}';
-                    }
-
-                    x.close(); // use this to close the modal immediately after payment.
-                }
+        <script>
+          window.onload = function payWithPaystack(){
+            var handler = PaystackPop.setup({
+              key: 'pk_live_af01cf2847da148ffeba5236d584601dda24b1a3',
+              email: '{{object.user.email}}',
+              amount: {{ payable }} * 100,
+              currency: "NGN",
+              ref: '{{ ref_id }}',
+              callback: function(response){
+                      window.location = '{% url 'verify_payment' customer_id ref_id  %}'
+                  },
+              onClose: function(){
+                window.location = '{% url "customer_profile" customer_id %}';
+              }
             });
-        }
-    </script>
+            handler.openIframe();
+          }
+          function customCallback(response){ console.log(response); }
+        </script>
     {% endif %}
 {% endblock page_js %}
